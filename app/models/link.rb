@@ -4,6 +4,6 @@ class Link < ActiveRecord::Base
   validate :valid_value
   
   def valid_value
-    errors.add(:url, "not a valid url") unless url.blank? or desc != 'Enter link URL'
+    errors.add(:url, "not a valid url") unless url.blank? or url != 'Enter link URL'
   end
 end

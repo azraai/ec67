@@ -4,6 +4,6 @@ class Note < ActiveRecord::Base
   validate :valid_value
   
   def valid_value
-    errors.add(:text, "not a valid url") unless text.blank? or text != 'Enter note text'
+    errors.add(:text, "not a valid note") unless text.blank? or text != 'Enter note text'
   end
 end
