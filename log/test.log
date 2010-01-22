@@ -1,0 +1,178 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (11.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateItems (20100122031642)
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "object" varchar(255), "desc" varchar(255), "state" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100122031642')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("items")[0m
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Test Item', '2010-01-22 03:17:32', '2010-01-22 03:17:32', 'Example note for this link.', 'link', NULL)[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateItems (20100122031642)
+Migrating to CreateComments (20100122032208)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "text" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100122032208')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("comments")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("items")[0m
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text") VALUES('Ariff Azraai', '2010-01-22 03:23:06', '2010-01-22 03:23:06', 'This is my comment')[0m
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text") VALUES('Ariff Azraai', '2010-01-22 03:24:28', '2010-01-22 03:24:28', 'This is my comment')[0m
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text") VALUES('Ariff Azraai', '2010-01-22 03:24:49', '2010-01-22 03:24:49', 'This is my comment')[0m
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Test Item', '2010-01-22 03:34:00', '2010-01-22 03:34:00', 'Example note for this link.', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Test Item', '2010-01-22 03:34:00', '2010-01-22 03:34:00', 'Example note for this link.', 'note', NULL)[0m
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'item') ORDER BY created_at DESC[0m
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 03:35:59', '2010-01-22 03:35:59', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 03:35:59', '2010-01-22 03:35:59', 'click start saving now', 'link', NULL)[0m
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'item') ORDER BY created_at DESC[0m
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 03:36:29', '2010-01-22 03:36:29', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 03:36:29', '2010-01-22 03:36:29', 'click start saving now', 'link', NULL)[0m
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;36;1mItem Create (0.5ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 03:36:51', '2010-01-22 03:36:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 03:36:51', '2010-01-22 03:36:51', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateItems (20100122031642)
+Migrating to CreateComments (20100122032208)
+Migrating to CreateLinks (20100122034440)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCREATE TABLE "links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100122034440')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("comments")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("items")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("links")[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateItems (20100122031642)
+Migrating to CreateComments (20100122032208)
+Migrating to CreateLinks (20100122034440)
+Migrating to CreateNotes (20100122034736)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100122034736')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("comments")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("items")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("links")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("notes")[0m
+  [4;36;1mItem Create (0.5ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 03:51:00', '2010-01-22 03:51:00', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 03:51:00', '2010-01-22 03:51:00', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 03:51:27', '2010-01-22 03:51:27', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 03:51:27', '2010-01-22 03:51:27', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateItems (20100122031642)
+Migrating to CreateComments (20100122032208)
+Migrating to CreateLinks (20100122034440)
+Migrating to CreateNotes (20100122034736)
+Migrating to AddReferencesToLinksNotesComments (20100122035158)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (26.2ms)[0m   [0mALTER TABLE "links" ADD "item_id" integer[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mALTER TABLE "notes" ADD "item_id" integer[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mALTER TABLE "comments" ADD "item_id" integer[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100122035158')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("comments")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("items")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("links")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("notes")[0m
+  [4;36;1mItem Create (0.7ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 03:53:52', '2010-01-22 03:53:52', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 03:53:52', '2010-01-22 03:53:52', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 04:06:40', '2010-01-22 04:06:40', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 04:06:40', '2010-01-22 04:06:40', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 04:06:40', '2010-01-22 04:06:40', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 04:06:40', '2010-01-22 04:06:40', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Create (0.3ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 04:06:40', '2010-01-22 04:06:40', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 04:06:40', '2010-01-22 04:06:40', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Create (0.2ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 04:06:40', '2010-01-22 04:06:40', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 04:06:41', '2010-01-22 04:06:41', 'click start saving now', 'note', NULL)[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 12:06:41) [GET]
+  [4;36;1mItem Load (0.5ms)[0m   [0;1mSELECT * FROM "items" ORDER BY created_at DESC[0m
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 04:07:48', '2010-01-22 04:07:48', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 04:07:48', '2010-01-22 04:07:48', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 04:07:48', '2010-01-22 04:07:48', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 04:07:48', '2010-01-22 04:07:48', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Create (0.3ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 04:07:48', '2010-01-22 04:07:48', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 04:07:48', '2010-01-22 04:07:48', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Create (0.3ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 04:07:48', '2010-01-22 04:07:48', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 04:07:48', '2010-01-22 04:07:48', 'click start saving now', 'note', NULL)[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 12:07:48) [GET]
+  [4;36;1mItem Load (0.5ms)[0m   [0;1mSELECT * FROM "items" ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;35;1mLink Load (0.3ms)[0m   [0mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
