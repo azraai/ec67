@@ -28,7 +28,7 @@ $(document).ready(function() {
   };
   
   $(".notice").fadeOut(5000);
-  $(".new_item #item_name, .new_item #item_link_attributes_url, .new_item #item_note_attributes_text, .new_item #item_desc").mask();
+  $(".new_item #item_name, .new_item #item_link_url, .new_item #item_note_text, .new_item #item_desc").mask();
 
   var get_vars  = http_get_var();
   
