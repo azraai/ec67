@@ -17,8 +17,8 @@ class Item < ActiveRecord::Base
   end
   
   def valid_value
-    errors.add(:name, "not a valid name") unless name.blank? or name != 'Enter your name'
-    errors.add(:desc, "not a valid note") unless desc.blank? or desc != 'Enter your note'
+    errors.add(:name, "not a valid name") unless name.blank? or name != ('Enter link name' || 'Enter note name')
+    errors.add(:desc, "not a valid note") unless desc.blank? or desc != 'Enter link note'
   end
   
   def valid_url
