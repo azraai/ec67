@@ -1,0 +1,322 @@
+@font-face
+{
+  font-family: "Myriad Pro";
+  src: local("Myriad Pro");
+}
+
+body
+{
+  font: 1em Georgia, serif;
+}
+a
+{
+  text-decoration: none;
+}
+a:hover
+{
+  text-decoration: underline;
+}
+
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+.container { width: 700px; }
+
+#bar
+{
+  background: #eee;
+  margin-bottom: 40px;
+  padding: 5px 0 5px 20px;
+  height: 30px;  
+}
+
+#bar #home a
+{
+  font: 2em/30px "Myriad Pro";
+  color: #333333;
+}
+#bar #home a:hover
+{
+  color: #484848;
+  text-decoration: none;
+}
+#bar #start a
+{
+  font-size: 0.8em;
+  line-height: 30px;
+  display: block;
+  text-align: center;
+  background: #ccc;
+  width: 120px;
+  height: 30px;
+  -moz-border-radius: 3px;
+}
+
+#wrap
+{
+  margin-left: 20px;
+}
+
+#main
+{
+  width: 520px;
+}
+#aside
+{
+  width: 120px;
+}
+
+.items
+{
+  margin-bottom: 20px;
+}
+.items .item
+{
+  line-height: 20px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+.items .item.link
+{
+  background: url(../images/icons/link.png) no-repeat left 3px;
+}
+.items .item.note
+{
+  background: url(../images/icons/note.png) no-repeat left 2px;
+}
+.items .item .name
+{
+  font-size: 1.25em;
+}
+.items .item .note
+{
+  font-size: 0.75em;
+}
+.items .item.note .data span
+{
+  display: block;
+}
+.items .item .actions
+{
+  width: 60px;
+}
+.items .item .data
+{
+  width: 400px;
+}
+.items .item .actions a
+{
+  display: block;
+  text-indent: -9999px;
+  float: left;
+  width: 20px;
+  height: 20px;
+}
+.items .item .actions .comment a
+{
+  background: url(../images/icons/comments.png) no-repeat center;
+}
+.items .item .actions .delete a
+{
+  background: url(../images/icons/cross.png) no-repeat center;
+}
+.items .item .actions .edit a
+{
+  background: url(../images/icons/pencil.png) no-repeat center;
+}
+
+.widget, .button
+{
+  margin-bottom: 20px;
+}
+.widget .title
+{
+  line-height: 30px;
+  background: #ccc;
+  display: block;
+  padding: 0 10px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+}
+.widget .content
+{
+  font-size: 0.75em;
+  line-height: 20px;
+  background: #eee;
+  padding: 10px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-bottomright: 3px;
+}
+.button a
+{
+  font-size: 0.8em;
+  line-height: 30px;
+  display: block;
+  text-align: center;
+  background: #ccc;
+  width: 120px;
+  height: 30px;
+  -moz-border-radius: 3px;
+}
+
+#filter li
+{
+  padding-left: 20px;
+}
+#filter li.link
+{
+  background: url(../images/icons/link.png) no-repeat left 3px;
+}
+#filter li.note
+{
+  background: url(../images/icons/note.png) no-repeat left center;
+}
+#filter li.image
+{
+  background: url(../images/icons/image.png) no-repeat left center;
+}
+#filter li.all
+{
+  background: url(../images/icons/text_list_bullets.png) no-repeat left center;
+}
+
+.fieldWithErrors label
+{
+  background: #c00 !important;
+}
+.fieldWithErrors input
+{
+  border: 1px solid #c00 !important;
+}
+
+#errorExplanation
+{
+  background: #f0f0f0;
+  margin-bottom: 20px;
+  width: 400px;
+  border: 2px solid #c00;
+}
+#errorExplanation h2
+{
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 30px;
+  color: #fff;
+  background: #c00;
+  display: block;
+  padding: 0 5px;
+}
+#errorExplanation p
+{
+  font-size: 0.75em;
+  line-height: 20px;
+  padding: 5px;
+}
+#errorExplanation ul
+{
+  font-size: 0.75em;
+  margin-left: 20px;
+  padding: 5px;
+}
+#errorExplanation li
+{
+  line-height: 20px;
+  list-style-type: disc;
+}
+
+.comments
+{
+  font: 0.625em "Lucida Sans", "Lucida Grande";
+  margin-top: 5px;
+  width: 400px;
+}
+.comments .comment, .comments .comment-form
+{
+  background: #ececec;
+  margin-bottom: 1px;
+  padding: 5px;
+}
+.comments .comment .name
+{
+  font-size: inherit;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.comment-form #new_comment label
+{
+  text-indent: -9999px;
+  position: absolute;
+}
+.comment-form #new_comment input, .comment-form #new_comment textarea
+{
+  font: 1em "Lucida Sans", "Lucida Grande";
+  display: block;
+  padding: 5px;
+  border: none;
+}
+.comment-form #new_comment #comment_text
+{
+  margin-bottom: 5px;
+  width: 380px;
+}
+.comment-form #new_comment #comment_name
+{
+  float: left;
+  width: 284px;
+}
+.comment-form #new_comment #comment_submit
+{
+  color: #fff;
+  background: #ccc;
+  float: right;
+  width: 90px;
+  padding: 4px;
+}
+.close a
+{
+  text-indent: -9999px;
+  display: block;
+  background: url(../images/icons/comments_delete.png) no-repeat center;  
+  margin: 5px 0 0 -21px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+
+.notice
+{
+  font: bold 2em;
+  line-height: 40px;
+  background: #fff;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+  position: absolute;
+}
+.notice span
+{
+  padding-left: 20px;
+}
+
+.form-input
+{
+  font-size: 0.75em;
+}
+.form-input label
+{
+  text-transform: lowercase;
+  color: #fff;
+  background: #ccc;
+  display: block;
+  padding: 0 5px 2px;
+  width: 50px;
+}
+.form-input input
+{
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 394px;
+  border: 1px solid #ccc;
+}

@@ -1,0 +1,16 @@
+<span class="data left">
+  
+  <span class="name"><%= note.name %></span>
+  <span class="note"><%= note.note.text %></span>
+  
+</span>
+
+<span class="actions right">
+  
+  <span class="comment"><%= link_to 'Comment', item_path(note) %></span>
+  <span class="edit"><%= link_to 'Edit', edit_item_path(note) %></span>
+  <span class="delete"><%= link_to 'Delete', item_path(note), :method => :delete, :confirm => "Are you sure?" %></span>
+  
+</span>
+
+<div class="clear"></div>

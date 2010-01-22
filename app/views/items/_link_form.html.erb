@@ -1,0 +1,20 @@
+<ul id="link-form" class="form-input">
+  
+  <li>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, :value => (@item.name || 'Enter your name') %>
+  </li>
+  
+  <% f.fields_for :link do |fl| %>
+  <li>
+    <%= fl.label :url, "URL" %>
+    <%= fl.text_field :url, :value => (@item.link.url || 'Enter your URL') %>
+  </li>
+  <% end %>
+  
+  <li>
+    <%= f.label :desc, "Note" %>
+    <%= f.text_field :desc, :value => (@item.desc || 'Enter your note') %>
+  </li>
+  
+</ul>

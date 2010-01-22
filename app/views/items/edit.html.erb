@@ -1,0 +1,10 @@
+<% form_for @item do |f| %>
+
+<%= f.error_messages %>
+
+<%= render :partial => "link_form", :locals => { :f => f } if @item.object == 'link' %>
+<%= render :partial => "note_form", :locals => { :f => f } if @item.object == 'note' %>
+
+<%= f.submit 'Save' %>
+
+<% end %>

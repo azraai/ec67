@@ -1,0 +1,12 @@
+<% form_for @item, :url => items_path(:type => params[:type]) do |f| %>
+
+<%= f.error_messages %>
+
+<%= render :partial => "link_form", :locals => { :f => f } if params[:type] == 'link' || !params.has_key?(:type) %>
+<%= render :partial => "note_form", :locals => { :f => f } if params[:type] == 'note' %>
+
+<%= f.hidden_field :object, :value => (params[:type] || 'link') %>
+
+<%= f.submit 'Save' %>
+
+<% end %>

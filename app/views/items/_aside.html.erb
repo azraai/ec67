@@ -1,0 +1,26 @@
+<% if @controller.action_name == 'new' %>
+<% if params[:type] == 'note'%>
+  <div id="new-link" class="new button"><%= link_to 'New Link Instead?', new_item_path %></div>
+<% else %>
+  <div id="new-note" class="new button"><%= link_to 'New Note Instead?', new_item_path(:type => 'note') %></div>
+<% end %>
+<% end %>
+
+<div id="filter" class="widget">
+  
+  <h2 class="title">Filter</h2>
+  
+  <div class="content">
+    
+    <ul>
+      
+      <li class="all"><%= link_to 'All', items_path %></li>
+      <li class="link"><%= link_to 'Link', items_path(:type => 'link') %></li>
+      <li class="note"><%= link_to 'Note', items_path(:type => 'note') %></li>
+      <li class="image"><%= link_to 'Image', items_path(:type => 'image') %></li>
+      
+    </ul>
+    
+  </div>
+  
+</div>

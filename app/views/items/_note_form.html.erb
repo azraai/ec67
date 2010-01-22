@@ -1,0 +1,15 @@
+<ul id="note-form" class="form-input">
+  
+  <li>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, :value => (@item.name || 'Enter your name') %>
+  </li>
+  
+  <% f.fields_for :note do |fn| %>
+  <li>
+    <%= fn.label :text, "Note" %>
+    <%= fn.text_field :text, :value => (@item.note.text || 'Enter your note') %>
+  </li>
+  <% end %>
+  
+</ul>
