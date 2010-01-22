@@ -39,3 +39,312 @@ Migrating to AddReferencesToLinksNotesComments (20100122035158)
   [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `notes`[0m
   [4;35;1mSQL (1.0ms)[0m   [0mdescribe `notes`[0m
   [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `notes`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#index (for 127.0.0.1 at 2010-01-22 16:04:03) [GET]
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM `items` ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+Rendered items/_aside (2.2ms)
+Completed in 49ms (View: 46, DB: 0) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:04:04) [GET]
+  [4;35;1mItem Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mLink Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `links`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (3.3ms)
+Rendered items/_aside (1.3ms)
+Completed in 30ms (View: 22, DB: 2) | 200 OK [http://localhost/items/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:04:06) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "item"=>{"name"=>"Enter link name", "link_attributes"=>{"url"=>"Enter link URL"}, "desc"=>"Enter link note", "object"=>"link"}}
+  [4;36;1mItem Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mLink Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `links`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (2.3ms)
+Rendered items/_aside (1.0ms)
+Completed in 26ms (View: 9, DB: 0) | 200 OK [http://localhost/items]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:04:09) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mNote Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `notes`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (2.9ms)
+Rendered items/_aside (1.0ms)
+Completed in 25ms (View: 16, DB: 2) | 200 OK [http://localhost/items/new?type=note]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:04:11) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "type"=>"note", "item"=>{"name"=>"Enter note name", "note_attributes"=>{"text"=>"Enter note text"}, "object"=>"note"}}
+  [4;36;1mItem Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mNote Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `notes`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.4ms)
+Rendered items/_aside (0.9ms)
+Completed in 26ms (View: 8, DB: 0) | 200 OK [http://localhost/items?type=note]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:04:45) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mNote Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `notes`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (2.9ms)
+Rendered items/_aside (1.0ms)
+Completed in 18ms (View: 10, DB: 2) | 200 OK [http://localhost/items/new?type=note]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:04:46) [GET]
+  Parameters: {"type"=>"note"}
+  [4;36;1mItem Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mNote Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `notes`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (2.7ms)
+Rendered items/_aside (1.0ms)
+Completed in 18ms (View: 10, DB: 2) | 200 OK [http://localhost/items/new?type=note]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:04:47) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "type"=>"note", "item"=>{"name"=>"Enter note name", "note_attributes"=>{"text"=>"Enter note text"}, "object"=>"note"}}
+  [4;35;1mItem Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mNote Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `notes`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.5ms)
+Rendered items/_aside (0.9ms)
+Completed in 96ms (View: 8, DB: 0) | 200 OK [http://localhost/items?type=note]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#index (for 127.0.0.1 at 2010-01-22 16:04:59) [GET]
+  Parameters: {"type"=>"note"}
+  [4;36;1mItem Load (0.5ms)[0m   [0;1mSELECT * FROM `items` WHERE (`items`.`object` = 'note') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+Rendered items/_aside (1.0ms)
+Completed in 7ms (View: 4, DB: 1) | 200 OK [http://localhost/items?type=note]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:05:05) [GET]
+  Parameters: {"type"=>"note"}
+  [4;36;1mItem Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mNote Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `notes`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (3.7ms)
+Rendered items/_aside (1.0ms)
+Completed in 19ms (View: 11, DB: 3) | 200 OK [http://localhost/items/new?type=note]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:05:06) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mNote Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `notes`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (2.8ms)
+Rendered items/_aside (1.0ms)
+Completed in 19ms (View: 10, DB: 2) | 200 OK [http://localhost/items/new?type=note]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:05:07) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "type"=>"note", "item"=>{"name"=>"Enter note name", "note_attributes"=>{"text"=>"Enter note text"}, "object"=>"note"}}
+  [4;36;1mItem Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mNote Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `notes`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.9ms)
+Rendered items/_aside (0.9ms)
+Completed in 90ms (View: 9, DB: 0) | 200 OK [http://localhost/items?type=note]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:05:15) [GET]
+  [4;35;1mItem Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mLink Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `links`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (3.5ms)
+Rendered items/_aside (1.2ms)
+Completed in 20ms (View: 12, DB: 2) | 200 OK [http://localhost/items/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:05:20) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "item"=>{"name"=>"Enter link name", "link_attributes"=>{"url"=>"Enter link URL"}, "desc"=>"Enter link note", "object"=>"link"}}
+  [4;36;1mItem Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mLink Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `links`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.9ms)
+Rendered items/_aside (0.9ms)
+Completed in 26ms (View: 8, DB: 0) | 200 OK [http://localhost/items]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:05:42) [GET]
+  [4;35;1mItem Columns (3.4ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mLink Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `links`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (3.5ms)
+Rendered items/_aside (1.2ms)
+Completed in 22ms (View: 11, DB: 5) | 200 OK [http://localhost/items/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:05:44) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "item"=>{"name"=>"Enter link name", "link_attributes"=>{"url"=>"Enter link URL"}, "desc"=>"Enter link note", "object"=>"link"}}
+  [4;36;1mItem Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mLink Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `links`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.9ms)
+Rendered items/_aside (0.9ms)
+Completed in 27ms (View: 8, DB: 0) | 200 OK [http://localhost/items]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:05:54) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "item"=>{"name"=>"Enter link name", "link_attributes"=>{"url"=>"Enter link URL"}, "desc"=>"Enter link note", "object"=>"link"}}
+  [4;35;1mItem Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mLink Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `links`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.8ms)
+Rendered items/_aside (0.9ms)
+Completed in 38ms (View: 8, DB: 0) | 200 OK [http://localhost/items]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:06:12) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "item"=>{"name"=>"Enter link name", "link_attributes"=>{"url"=>"Enter link URL"}, "desc"=>"Enter link note", "object"=>"link"}}
+  [4;36;1mItem Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mLink Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `links`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (2.0ms)
+Rendered items/_aside (0.9ms)
+Completed in 35ms (View: 10, DB: 0) | 200 OK [http://localhost/items]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:06:17) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mNote Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `notes`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (2.8ms)
+Rendered items/_aside (1.0ms)
+Completed in 19ms (View: 10, DB: 2) | 200 OK [http://localhost/items/new?type=note]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:06:18) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "type"=>"note", "item"=>{"name"=>"Enter note name", "note_attributes"=>{"text"=>"Enter note text"}, "object"=>"note"}}
+  [4;36;1mItem Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mNote Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `notes`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.4ms)
+Rendered items/_aside (0.9ms)
+Completed in 26ms (View: 8, DB: 0) | 200 OK [http://localhost/items?type=note]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2010-01-22 16:07:18) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "type"=>"note", "item"=>{"name"=>"Enter note name", "note_attributes"=>{"text"=>"Enter note text"}, "object"=>"note"}}
+
+SyntaxError (/Users/azraai/Works/simpla/app/models/item.rb:20: syntax error, unexpected ','
+...lank? or !['Enter link name'., 'Enter note name'].include?(n...
+                              ^
+/Users/azraai/Works/simpla/app/models/item.rb:20: syntax error, unexpected ']', expecting kEND
+...ink name'., 'Enter note name'].include?(name)
+                              ^):
+  /Users/azraai/.gem/ruby/1.8/gems/inherited_resources-0.9.4/lib/inherited_resources/class_methods.rb:307:in `initialize_resources_class_accessors!'
+  /Users/azraai/.gem/ruby/1.8/gems/inherited_resources-0.9.4/lib/inherited_resources/class_methods.rb:335:in `send'
+  /Users/azraai/.gem/ruby/1.8/gems/inherited_resources-0.9.4/lib/inherited_resources/class_methods.rb:335:in `inherited'
+  app/controllers/items_controller.rb:1
+
+Rendered rescues/_trace (113.3ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:07:25) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "type"=>"note", "item"=>{"name"=>"Enter note name", "note_attributes"=>{"text"=>"Enter note text"}, "object"=>"note"}}
+  [4;36;1mItem Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mNote Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `notes`[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (2.2ms)
+Rendered items/_aside (0.9ms)
+Completed in 34ms (View: 9, DB: 0) | 200 OK [http://localhost/items?type=note]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#new (for 127.0.0.1 at 2010-01-22 16:07:32) [GET]
+  [4;35;1mItem Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mLink Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `links`[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (3.3ms)
+Rendered items/_aside (1.2ms)
+Completed in 20ms (View: 10, DB: 4) | 200 OK [http://localhost/items/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ItemsController#create (for 127.0.0.1 at 2010-01-22 16:07:34) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"fUjSOIJJn6swBezLvbN9EZE1MJ+4+Gpsz1HvhqAulNQ=", "item"=>{"name"=>"Enter link name", "link_attributes"=>{"url"=>"Enter link URL"}, "desc"=>"Enter link note", "object"=>"link"}}
+  [4;36;1mItem Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mLink Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `links`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (2.1ms)
+Rendered items/_aside (0.9ms)
+Completed in 26ms (View: 9, DB: 0) | 200 OK [http://localhost/items]
