@@ -2,7 +2,11 @@ class ItemsController < InheritedResources::Base
   has_scope :type, :only => [:index, :new]
   
   def create
-    create! { items_path }
+    create! { root_path }
+  end
+  
+  def destroy
+    destroy! { root_path }
   end
   
   def new
@@ -13,6 +17,6 @@ class ItemsController < InheritedResources::Base
   end
   
   def update
-    update! { items_path }
+    update! { root_path }
   end
 end

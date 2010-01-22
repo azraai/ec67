@@ -5,8 +5,8 @@ class CommentsController < InheritedResources::Base
   
   def create
     create! do
-      cookies[:sc] = @comment.item.id
-      items_path
+      cookies[:sc] = @comment.item_id
+      root_path
     end
   end
 end

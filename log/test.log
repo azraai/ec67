@@ -3526,3 +3526,979 @@ Processing CommentsController#create (for 0.0.0.0 at 2010-01-22 16:26:29) [POST]
   [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:26:29', '2010-01-22 08:26:29', 'This is my comment', NULL)[0m
 Redirected to http://test.host/items
 Completed in 4ms (DB: 0) | 302 Found [http://test.host/comments?comment%5Bname%5D=Ariff+Azraai&comment%5Btext%5D=This+is+my+comment]
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:29', '2010-01-22 08:34:29', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:29', '2010-01-22 08:34:29', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mComment Create (0.2ms)[0m   [0mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+  Parameters: {"item"=>"1"}
+  [4;36;1mComment Load (0.6ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."item_id" = '1') ORDER BY created_at DESC[0m
+Completed in 21ms (View: 16, DB: 0) | 200 OK [http://test.host/comments.json?item=1]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mComment Create (0.2ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+  [4;35;1mComment Load (0.3ms)[0m   [0mSELECT * FROM "comments" ORDER BY created_at DESC[0m
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://test.host/comments.json]
+
+
+Processing CommentsController#create (for 0.0.0.0 at 2010-01-22 16:34:31) [POST]
+  Parameters: {"comment"=>{"name"=>"Ariff Azraai", "text"=>"This is my comment"}}
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'This is my comment', NULL)[0m
+  [4;35;1mItem Create (0.4ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Test Item', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'Example note for this link.', 'link', NULL)[0m
+
+
+Processing ItemsController#destroy (for 0.0.0.0 at 2010-01-22 16:34:31) [DELETE]
+  Parameters: {"id"=>"1"}
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+  [4;35;1mItem Destroy (0.1ms)[0m   [0mDELETE FROM "items" WHERE "id" = 1[0m
+Redirected to http://test.host/items
+Completed in 9ms (DB: 0) | 302 Found [http://test.host/items/1]
+  [4;36;1mLink Create (0.3ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#edit (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/edit
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link_form (3.9ms)
+Rendered items/_aside (1.6ms)
+Completed in 18ms (View: 14, DB: 1) | 200 OK [http://test.host/items/1/edit]
+  [4;35;1mLink Create (0.5ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.2ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.2ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 4 WHERE "id" = 2[0m
+  [4;35;1mLink Create (0.4ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.2ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM "items" ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (3.4ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (3.5ms)
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (2.6ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (4.0ms)
+Rendered items/_aside (0.9ms)
+Completed in 19ms (View: 17, DB: 5) | 200 OK [http://test.host/items]
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mNote Create (0.2ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 2 WHERE "id" = 1[0m
+  [4;36;1mLink Create (0.1ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.2ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 3 WHERE "id" = 2[0m
+  [4;35;1mNote Create (0.1ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+  Parameters: {"type"=>"link"}
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;35;1mLink Load (0.2ms)[0m   [0mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (2.8ms)
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (2.8ms)
+Rendered items/_aside (0.8ms)
+Completed in 11ms (View: 8, DB: 3) | 200 OK [http://test.host/items?type=link]
+  [4;35;1mLink Create (0.4ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.2ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Load (0.4ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mNote Load (0.2ms)[0m   [0;1mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (2.6ms)
+  [4;35;1mNote Load (0.3ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (2.4ms)
+Rendered items/_aside (0.8ms)
+Completed in 10ms (View: 8, DB: 2) | 200 OK [http://test.host/items?type=note]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (5.6ms)
+Rendered items/_aside (1.2ms)
+Completed in 26ms (View: 15, DB: 0) | 200 OK [http://test.host/items/new]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+  Parameters: {"type"=>"link"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.7ms)
+Rendered items/_aside (75.4ms)
+Completed in 81ms (View: 80, DB: 0) | 200 OK [http://test.host/items/new?type=link]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:34:31) [GET]
+  Parameters: {"type"=>"note"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.7ms)
+Rendered items/_aside (0.9ms)
+Completed in 7ms (View: 7, DB: 0) | 200 OK [http://test.host/items/new?type=note]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-01-22 16:34:31) [POST]
+  Parameters: {"item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+Redirected to http://test.host/items
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:34:31) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/items
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mNote Create (0.4ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:31', '2010-01-22 08:34:31', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:31', '2010-01-22 08:34:31', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:31', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:34:31) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"How to use simpla?", "desc"=>"click start saving now", "object"=>"note"}}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/items
+Completed in 8ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=click+start+saving+now&item%5Bname%5D=How+to+use+simpla%3F&item%5Bobject%5D=note]
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:48', '2010-01-22 08:34:48', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:48', '2010-01-22 08:34:48', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:50', '2010-01-22 08:34:50', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:50', '2010-01-22 08:34:50', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:50', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mComment Create (0.2ms)[0m   [0mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:34:50', '2010-01-22 08:34:50', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:34:50) [GET]
+  Parameters: {"item"=>"1"}
+  [4;36;1mComment Load (0.3ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."item_id" = '1') ORDER BY created_at DESC[0m
+Completed in 22ms (View: 16, DB: 0) | 200 OK [http://test.host/comments.json?item=1]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:50', '2010-01-22 08:34:50', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:50', '2010-01-22 08:34:50', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:50', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mComment Create (0.8ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:34:50', '2010-01-22 08:34:50', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:34:50) [GET]
+  [4;35;1mComment Load (0.5ms)[0m   [0mSELECT * FROM "comments" ORDER BY created_at DESC[0m
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://test.host/comments.json]
+
+
+Processing CommentsController#create (for 0.0.0.0 at 2010-01-22 16:34:50) [POST]
+  Parameters: {"comment"=>{"name"=>"Ariff Azraai", "text"=>"This is my comment"}}
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:34:50', '2010-01-22 08:34:50', 'This is my comment', NULL)[0m
+  [4;35;1mItem Create (0.4ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Test Item', '2010-01-22 08:34:50', '2010-01-22 08:34:50', 'Example note for this link.', 'link', NULL)[0m
+
+
+Processing ItemsController#destroy (for 0.0.0.0 at 2010-01-22 16:34:50) [DELETE]
+  Parameters: {"id"=>"1"}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+  [4;35;1mItem Destroy (0.1ms)[0m   [0mDELETE FROM "items" WHERE "id" = 1[0m
+Redirected to http://test.host/items
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/items/1]
+  [4;36;1mLink Create (0.8ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:50', '2010-01-22 08:34:50', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:50', '2010-01-22 08:34:50', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:50', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#edit (for 0.0.0.0 at 2010-01-22 16:34:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/edit
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link_form (3.6ms)
+Rendered items/_aside (3.1ms)
+Completed in 14ms (View: 13, DB: 2) | 200 OK [http://test.host/items/1/edit]
+  [4;35;1mLink Create (0.5ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.2ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 4 WHERE "id" = 2[0m
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.2ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.2ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.2ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.4ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:34:51) [GET]
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM "items" ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (3.2ms)
+  [4;35;1mNote Load (0.3ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (3.3ms)
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (3.0ms)
+  [4;35;1mNote Load (0.3ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (3.0ms)
+Rendered items/_aside (0.9ms)
+Completed in 21ms (View: 18, DB: 5) | 200 OK [http://test.host/items]
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.2ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mNote Create (0.3ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 2 WHERE "id" = 1[0m
+  [4;36;1mLink Create (0.1ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 3 WHERE "id" = 2[0m
+  [4;35;1mNote Create (0.1ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:34:51) [GET]
+  Parameters: {"type"=>"link"}
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;35;1mLink Load (0.4ms)[0m   [0mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (3.0ms)
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (2.5ms)
+Rendered items/_aside (0.8ms)
+Completed in 10ms (View: 8, DB: 3) | 200 OK [http://test.host/items?type=link]
+  [4;35;1mLink Create (0.4ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.2ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:34:51) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Load (0.4ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mNote Load (0.2ms)[0m   [0;1mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (2.5ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (2.4ms)
+Rendered items/_aside (0.8ms)
+Completed in 9ms (View: 7, DB: 2) | 200 OK [http://test.host/items?type=note]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:34:51) [GET]
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.5ms)
+Rendered items/_aside (1.2ms)
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://test.host/items/new]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:34:51) [GET]
+  Parameters: {"type"=>"link"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.5ms)
+Rendered items/_aside (73.0ms)
+Completed in 79ms (View: 78, DB: 0) | 200 OK [http://test.host/items/new?type=link]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:34:51) [GET]
+  Parameters: {"type"=>"note"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.8ms)
+Rendered items/_aside (1.0ms)
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://test.host/items/new?type=note]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-01-22 16:34:51) [POST]
+  Parameters: {"item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+Redirected to http://test.host/items
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:34:51) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/items
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mNote Create (0.3ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:34:51', '2010-01-22 08:34:51', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:34:51', '2010-01-22 08:34:51', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:34:51', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:34:51) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"How to use simpla?", "desc"=>"click start saving now", "object"=>"note"}}
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/items
+Completed in 8ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=click+start+saving+now&item%5Bname%5D=How+to+use+simpla%3F&item%5Bobject%5D=note]
+  [4;36;1mItem Create (0.7ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:33', '2010-01-22 08:35:33', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:33', '2010-01-22 08:35:33', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mComment Create (0.2ms)[0m   [0mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:35:35) [GET]
+  Parameters: {"item"=>"1"}
+  [4;36;1mComment Load (0.3ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."item_id" = '1') ORDER BY created_at DESC[0m
+Completed in 20ms (View: 15, DB: 0) | 200 OK [http://test.host/comments.json?item=1]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:35:35) [GET]
+  [4;35;1mComment Load (0.4ms)[0m   [0mSELECT * FROM "comments" ORDER BY created_at DESC[0m
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://test.host/comments.json]
+
+
+Processing CommentsController#create (for 0.0.0.0 at 2010-01-22 16:35:35) [POST]
+  Parameters: {"comment"=>{"name"=>"Ariff Azraai", "text"=>"This is my comment"}}
+  [4;36;1mComment Create (0.3ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'This is my comment', NULL)[0m
+Redirected to http://test.host/
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/comments?comment%5Bname%5D=Ariff+Azraai&comment%5Btext%5D=This+is+my+comment]
+  [4;35;1mItem Create (0.4ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Test Item', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'Example note for this link.', 'link', NULL)[0m
+
+
+Processing ItemsController#destroy (for 0.0.0.0 at 2010-01-22 16:35:35) [DELETE]
+  Parameters: {"id"=>"1"}
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+  [4;35;1mItem Destroy (0.1ms)[0m   [0mDELETE FROM "items" WHERE "id" = 1[0m
+Redirected to http://test.host/items
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items/1]
+  [4;36;1mLink Create (0.3ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#edit (for 0.0.0.0 at 2010-01-22 16:35:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/edit
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link_form (3.5ms)
+Rendered items/_aside (1.6ms)
+Completed in 12ms (View: 11, DB: 1) | 200 OK [http://test.host/items/1/edit]
+  [4;35;1mLink Create (0.4ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.2ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 4 WHERE "id" = 2[0m
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:35:35) [GET]
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM "items" ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (3.0ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (2.7ms)
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (2.4ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (2.2ms)
+Rendered items/_aside (0.8ms)
+Completed in 16ms (View: 14, DB: 4) | 200 OK [http://test.host/items]
+  [4;36;1mLink Create (0.3ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.3ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.2ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mNote Create (0.2ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 2 WHERE "id" = 1[0m
+  [4;36;1mLink Create (0.1ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:35', '2010-01-22 08:35:35', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:35', "item_id" = 3 WHERE "id" = 2[0m
+  [4;35;1mNote Create (0.1ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:35', '2010-01-22 08:35:35', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:36', '2010-01-22 08:35:36', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:36', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:35:36) [GET]
+  Parameters: {"type"=>"link"}
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;35;1mLink Load (0.2ms)[0m   [0mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (2.6ms)
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (2.4ms)
+Rendered items/_aside (0.8ms)
+Completed in 9ms (View: 7, DB: 3) | 200 OK [http://test.host/items?type=link]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:36', '2010-01-22 08:35:36', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:36', '2010-01-22 08:35:36', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:36', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:36', '2010-01-22 08:35:36', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:36', '2010-01-22 08:35:36', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:36', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:36', '2010-01-22 08:35:36', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:36', '2010-01-22 08:35:36', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:36', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:36', '2010-01-22 08:35:36', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:36', '2010-01-22 08:35:36', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:36', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:35:36) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mNote Load (0.2ms)[0m   [0;1mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (2.4ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (2.3ms)
+Rendered items/_aside (0.8ms)
+Completed in 9ms (View: 7, DB: 2) | 200 OK [http://test.host/items?type=note]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:35:36) [GET]
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.8ms)
+Rendered items/_aside (1.4ms)
+Completed in 10ms (View: 9, DB: 0) | 200 OK [http://test.host/items/new]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:35:36) [GET]
+  Parameters: {"type"=>"link"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.5ms)
+Rendered items/_aside (71.8ms)
+Completed in 77ms (View: 76, DB: 0) | 200 OK [http://test.host/items/new?type=link]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:35:36) [GET]
+  Parameters: {"type"=>"note"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.8ms)
+Rendered items/_aside (0.9ms)
+Completed in 6ms (View: 6, DB: 0) | 200 OK [http://test.host/items/new?type=note]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-01-22 16:35:36) [POST]
+  Parameters: {"item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:36', '2010-01-22 08:35:36', 'simple link shortening service', 'link', NULL)[0m
+Redirected to http://test.host/items
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:35:36', '2010-01-22 08:35:36', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:35:36', '2010-01-22 08:35:36', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:35:36', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:35:36) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/items
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mNote Create (0.3ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:35:36', '2010-01-22 08:35:36', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:35:36', '2010-01-22 08:35:36', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:35:36', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:35:36) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"How to use simpla?", "desc"=>"click start saving now", "object"=>"note"}}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/items
+Completed in 6ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=click+start+saving+now&item%5Bname%5D=How+to+use+simpla%3F&item%5Bobject%5D=note]
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:41', '2010-01-22 08:36:41', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:41', '2010-01-22 08:36:41', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:43', '2010-01-22 08:36:43', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:43', '2010-01-22 08:36:43', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:43', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mComment Create (0.2ms)[0m   [0mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:36:43', '2010-01-22 08:36:43', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:36:43) [GET]
+  Parameters: {"item"=>"1"}
+  [4;36;1mComment Load (0.6ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."item_id" = '1') ORDER BY created_at DESC[0m
+Completed in 19ms (View: 15, DB: 0) | 200 OK [http://test.host/comments.json?item=1]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:43', '2010-01-22 08:36:43', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:43', '2010-01-22 08:36:43', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:43', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mComment Create (0.7ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:36:43', '2010-01-22 08:36:43', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:36:43) [GET]
+  [4;35;1mComment Load (0.2ms)[0m   [0mSELECT * FROM "comments" ORDER BY created_at DESC[0m
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://test.host/comments.json]
+
+
+Processing CommentsController#create (for 0.0.0.0 at 2010-01-22 16:36:43) [POST]
+  Parameters: {"comment"=>{"name"=>"Ariff Azraai", "text"=>"This is my comment"}}
+  [4;36;1mComment Create (0.4ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:36:43', '2010-01-22 08:36:43', 'This is my comment', NULL)[0m
+Redirected to http://test.host/
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/comments?comment%5Bname%5D=Ariff+Azraai&comment%5Btext%5D=This+is+my+comment]
+  [4;35;1mItem Create (0.4ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Test Item', '2010-01-22 08:36:43', '2010-01-22 08:36:43', 'Example note for this link.', 'link', NULL)[0m
+
+
+Processing ItemsController#destroy (for 0.0.0.0 at 2010-01-22 16:36:43) [DELETE]
+  Parameters: {"id"=>"1"}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+  [4;35;1mItem Destroy (0.1ms)[0m   [0mDELETE FROM "items" WHERE "id" = 1[0m
+Redirected to http://test.host/items
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/items/1]
+  [4;36;1mLink Create (0.3ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:43', '2010-01-22 08:36:43', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:43', '2010-01-22 08:36:43', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:43', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#edit (for 0.0.0.0 at 2010-01-22 16:36:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/edit
+  [4;36;1mLink Load (0.4ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link_form (3.7ms)
+Rendered items/_aside (1.6ms)
+Completed in 13ms (View: 12, DB: 1) | 200 OK [http://test.host/items/1/edit]
+  [4;35;1mLink Create (0.4ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:43', '2010-01-22 08:36:43', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.2ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 4 WHERE "id" = 2[0m
+  [4;35;1mLink Create (0.4ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.3ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:36:44) [GET]
+  [4;35;1mItem Load (0.4ms)[0m   [0mSELECT * FROM "items" ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (3.0ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (3.2ms)
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (2.6ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (2.6ms)
+Rendered items/_aside (0.9ms)
+Completed in 17ms (View: 15, DB: 5) | 200 OK [http://test.host/items]
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mNote Create (0.2ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 2 WHERE "id" = 1[0m
+  [4;36;1mLink Create (0.1ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 3 WHERE "id" = 2[0m
+  [4;35;1mNote Create (0.1ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:36:44) [GET]
+  Parameters: {"type"=>"link"}
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;35;1mLink Load (0.2ms)[0m   [0mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (2.6ms)
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (2.5ms)
+Rendered items/_aside (0.8ms)
+Completed in 10ms (View: 8, DB: 2) | 200 OK [http://test.host/items?type=link]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.2ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:36:44) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Load (0.4ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mNote Load (0.2ms)[0m   [0;1mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (2.4ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (2.2ms)
+Rendered items/_aside (0.9ms)
+Completed in 9ms (View: 7, DB: 2) | 200 OK [http://test.host/items?type=note]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:36:44) [GET]
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.9ms)
+Rendered items/_aside (3.3ms)
+Completed in 11ms (View: 10, DB: 0) | 200 OK [http://test.host/items/new]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:36:44) [GET]
+  Parameters: {"type"=>"link"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.5ms)
+Rendered items/_aside (1.1ms)
+Completed in 91ms (View: 91, DB: 0) | 200 OK [http://test.host/items/new?type=link]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:36:44) [GET]
+  Parameters: {"type"=>"note"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.7ms)
+Rendered items/_aside (1.8ms)
+Completed in 7ms (View: 7, DB: 0) | 200 OK [http://test.host/items/new?type=note]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-01-22 16:36:44) [POST]
+  Parameters: {"item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+Redirected to http://test.host/
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:36:44) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mNote Create (0.3ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:36:44', '2010-01-22 08:36:44', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:36:44', '2010-01-22 08:36:44', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.2ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:36:44', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:36:44) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"How to use simpla?", "desc"=>"click start saving now", "object"=>"note"}}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/
+Completed in 8ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=click+start+saving+now&item%5Bname%5D=How+to+use+simpla%3F&item%5Bobject%5D=note]
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:15', '2010-01-22 08:37:15', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:15', '2010-01-22 08:37:15', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+  [4;35;1mItem Load (0.2ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mComment Create (0.2ms)[0m   [0mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+  Parameters: {"item"=>"1"}
+  [4;36;1mComment Load (0.3ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."item_id" = '1') ORDER BY created_at DESC[0m
+Completed in 19ms (View: 15, DB: 0) | 200 OK [http://test.host/comments.json?item=1]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mComment Create (0.7ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'This is my comment', 1)[0m
+
+
+Processing CommentsController#index to json (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+  [4;35;1mComment Load (0.2ms)[0m   [0mSELECT * FROM "comments" ORDER BY created_at DESC[0m
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://test.host/comments.json]
+
+
+Processing CommentsController#create (for 0.0.0.0 at 2010-01-22 16:37:17) [POST]
+  Parameters: {"comment"=>{"name"=>"Ariff Azraai", "text"=>"This is my comment"}}
+  [4;36;1mComment Create (0.3ms)[0m   [0;1mINSERT INTO "comments" ("name", "created_at", "updated_at", "text", "item_id") VALUES('Ariff Azraai', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'This is my comment', NULL)[0m
+Redirected to http://test.host/
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/comments?comment%5Bname%5D=Ariff+Azraai&comment%5Btext%5D=This+is+my+comment]
+  [4;35;1mItem Create (0.4ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Test Item', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'Example note for this link.', 'link', NULL)[0m
+
+
+Processing ItemsController#destroy (for 0.0.0.0 at 2010-01-22 16:37:17) [DELETE]
+  Parameters: {"id"=>"1"}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+  [4;35;1mItem Destroy (0.1ms)[0m   [0mDELETE FROM "items" WHERE "id" = 1[0m
+Redirected to http://test.host/
+Completed in 6ms (DB: 0) | 302 Found [http://test.host/items/1]
+  [4;36;1mLink Create (0.6ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#edit (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mItem Load (0.3ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/edit
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link_form (3.5ms)
+Rendered items/_aside (1.6ms)
+Completed in 13ms (View: 11, DB: 1) | 200 OK [http://test.host/items/1/edit]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.2ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 4 WHERE "id" = 2[0m
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM "items" ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mLink Load (0.2ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (3.2ms)
+  [4;35;1mNote Load (0.3ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (3.1ms)
+  [4;36;1mLink Load (0.5ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (3.0ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (3.1ms)
+Rendered items/_aside (0.8ms)
+Completed in 18ms (View: 15, DB: 5) | 200 OK [http://test.host/items]
+  [4;36;1mLink Create (0.4ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.2ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.1ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 1 WHERE "id" = 1[0m
+  [4;35;1mNote Create (0.1ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 2 WHERE "id" = 1[0m
+  [4;36;1mLink Create (0.1ms)[0m   [0;1mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;36;1mLink Update (0.3ms)[0m   [0;1mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 3 WHERE "id" = 2[0m
+  [4;35;1mNote Create (0.1ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+  Parameters: {"type"=>"link"}
+  [4;36;1mItem Load (0.4ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."object" = 'link') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;35;1mLink Load (0.2ms)[0m   [0mSELECT * FROM "links" WHERE ("links".item_id = 1) LIMIT 1[0m
+Rendered items/_link (2.6ms)
+  [4;36;1mLink Load (0.3ms)[0m   [0;1mSELECT * FROM "links" WHERE ("links".item_id = 3) LIMIT 1[0m
+Rendered items/_link (2.8ms)
+Rendered items/_aside (0.8ms)
+Completed in 10ms (View: 8, DB: 3) | 200 OK [http://test.host/items?type=link]
+  [4;35;1mLink Create (0.3ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 1 WHERE "id" = 1[0m
+  [4;36;1mNote Create (0.2ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 2 WHERE "id" = 1[0m
+  [4;35;1mLink Create (0.1ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 3 WHERE "id" = 2[0m
+  [4;36;1mNote Create (0.1ms)[0m   [0;1mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:17', '2010-01-22 08:37:17', 'this is my note. yadadadad', NULL)[0m
+  [4;35;1mItem Create (0.1ms)[0m   [0mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:17', '2010-01-22 08:37:17', 'click start saving now', 'note', NULL)[0m
+  [4;36;1mNote Update (0.1ms)[0m   [0;1mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:17', "item_id" = 4 WHERE "id" = 2[0m
+
+
+Processing ItemsController#index (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+  Parameters: {"type"=>"note"}
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM "items" WHERE ("items"."object" = 'note') ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering items/index
+  [4;36;1mNote Load (0.2ms)[0m   [0;1mSELECT * FROM "notes" WHERE ("notes".item_id = 2) LIMIT 1[0m
+Rendered items/_note (2.8ms)
+  [4;35;1mNote Load (0.2ms)[0m   [0mSELECT * FROM "notes" WHERE ("notes".item_id = 4) LIMIT 1[0m
+Rendered items/_note (2.5ms)
+Rendered items/_aside (0.9ms)
+Completed in 10ms (View: 8, DB: 2) | 200 OK [http://test.host/items?type=note]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.5ms)
+Rendered items/_aside (1.2ms)
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://test.host/items/new]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+  Parameters: {"type"=>"link"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_link_form (1.7ms)
+Rendered items/_aside (1.1ms)
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://test.host/items/new?type=link]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-01-22 16:37:17) [GET]
+  Parameters: {"type"=>"note"}
+Rendering template within layouts/application
+Rendering items/new
+Rendered items/_note_form (1.8ms)
+Rendered items/_aside (0.9ms)
+Completed in 79ms (View: 7, DB: 0) | 200 OK [http://test.host/items/new?type=note]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-01-22 16:37:18) [POST]
+  Parameters: {"item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Create (0.4ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:18', '2010-01-22 08:37:18', 'simple link shortening service', 'link', NULL)[0m
+Redirected to http://test.host/
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mLink Create (0.4ms)[0m   [0mINSERT INTO "links" ("created_at", "updated_at", "url", "item_id") VALUES('2010-01-22 08:37:18', '2010-01-22 08:37:18', 'http://www.example.com', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('Bit.ly', '2010-01-22 08:37:18', '2010-01-22 08:37:18', 'simple link shortening service', 'link', NULL)[0m
+  [4;35;1mLink Update (0.1ms)[0m   [0mUPDATE "links" SET "updated_at" = '2010-01-22 08:37:18', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:37:18) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"Bit.ly", "desc"=>"simple link shortening service", "object"=>"link"}}
+  [4;36;1mItem Load (0.2ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=simple+link+shortening+service&item%5Bname%5D=Bit.ly&item%5Bobject%5D=link]
+  [4;35;1mNote Create (0.3ms)[0m   [0mINSERT INTO "notes" ("created_at", "updated_at", "text", "item_id") VALUES('2010-01-22 08:37:18', '2010-01-22 08:37:18', 'this is my note. yadadadad', NULL)[0m
+  [4;36;1mItem Create (0.1ms)[0m   [0;1mINSERT INTO "items" ("name", "created_at", "updated_at", "desc", "object", "state") VALUES('How to use simpla?', '2010-01-22 08:37:18', '2010-01-22 08:37:18', 'click start saving now', 'note', NULL)[0m
+  [4;35;1mNote Update (0.1ms)[0m   [0mUPDATE "notes" SET "updated_at" = '2010-01-22 08:37:18', "item_id" = 1 WHERE "id" = 1[0m
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-01-22 16:37:18) [PUT]
+  Parameters: {"id"=>"1", "item"=>{"name"=>"How to use simpla?", "desc"=>"click start saving now", "object"=>"note"}}
+  [4;36;1mItem Load (0.3ms)[0m   [0;1mSELECT * FROM "items" WHERE ("items"."id" = 1) ORDER BY created_at DESC[0m
+Redirected to http://test.host/
+Completed in 6ms (DB: 0) | 302 Found [http://test.host/items/1?item%5Bdesc%5D=click+start+saving+now&item%5Bname%5D=How+to+use+simpla%3F&item%5Bobject%5D=note]

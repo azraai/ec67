@@ -112,7 +112,7 @@ class ItemsControllerTest < ActionController::TestCase
       end
     
     should_set_the_flash_to /created/i
-    should_redirect_to("items index") { items_path }
+    should_redirect_to("items index") { root_path }
   end
     
   fast_context "GET to edit" do
@@ -137,7 +137,7 @@ class ItemsControllerTest < ActionController::TestCase
       end
       
       should_set_the_flash_to /updated/i
-      should_redirect_to("items index") { items_path }
+      should_redirect_to("items index") { root_path }
     end
     
     fast_context "note" do
@@ -148,7 +148,7 @@ class ItemsControllerTest < ActionController::TestCase
       end
       
       should_set_the_flash_to /updated/i
-      should_redirect_to("items index") { items_path }
+      should_redirect_to("items index") { root_path }
     end
   end
   
@@ -159,6 +159,6 @@ class ItemsControllerTest < ActionController::TestCase
     end
     
     should_set_the_flash_to /destroyed/i
-    should_redirect_to("items index") { items_path }
+    should_redirect_to("items index") { root_path }
   end
 end

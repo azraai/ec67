@@ -41,6 +41,6 @@ class CommentsControllerTest < ActionController::TestCase
     end
     
     should_set_the_flash_to /created/i
-    should_redirect_to("items index") { items_path }
+    should_redirect_to("items index") { root_path }
   end
 end
