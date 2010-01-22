@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
   has_one :link
   has_one :note
   has_many :comments
+  accepts_nested_attributes_for :note, :link
   
   default_scope :order => 'created_at DESC'
   named_scope :type, lambda { |type| { :conditions => { :object => type } } }
