@@ -1,18 +1,3 @@
-function http_get_var()
-{
-  var vars = [], hash;
-  var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-  
-  for(var i = 0; i < hashes.length; i++)
-  {
-    hash = hashes[i].split('=');
-    vars.push(hash[0]);
-    vars[hash[0]] = hash[1];
-  }
-  
-  return vars;
-}
-
 $(document).ready(function() {
     
   $.fn.mask = function(){
@@ -30,8 +15,6 @@ $(document).ready(function() {
   $(".notice").fadeOut(5000);
   $(".new_item #item_name, .new_item #item_link_attributes_url, .new_item #item_note_attributes_text, .new_item #item_desc").mask();
 
-  var get_vars  = http_get_var();
-  
   if ($.cookie("sc"))
   {
     var id = $.cookie("sc");
@@ -39,7 +22,7 @@ $(document).ready(function() {
     $('li#item-' + id).append('<span class="close"><a href="#">Close</a></span');    
     $('li#item-' + id).append('<ul id="thread-' + id + '" class="comments"></ul>');
     
-    $.getJSON('comments.json?item=' + id, function(data) {        
+    $.getJSON('/items/' + id + '/comments.json', function(data) {        
       for(i = 0, length = data.length; i < length; ++i) {
         var d = data[i].comment;
 
@@ -53,11 +36,10 @@ $(document).ready(function() {
     
     var form  = []
     form.push('<li class="comment-form">');
-    form.push('<form id="new_comment" class="new_comment" method="post" action="/comments">');
+    form.push('<form id="new_comment" class="new_comment" method="post" action="/items/ ' + id + '/comments">');
     form.push('<input type="hidden" name="authenticity_token" value="' + AUTH_TOKEN + '" />');
     form.push('<label for="comment_text">Comment</label><textarea id="comment_text" name="comment[text">Your Comment</textarea>');
     form.push('<label for="comment_name">Name</label><input type="text" id="comment_name" name="comment[name]" value="Your Name" />');
-    form.push('<input type="hidden" name="comment[item_id]" value="' + id + '" />');
     form.push('<input type="submit" id="comment_submit" name="commit" value="Comment" />');
     form.push('<div class="clear"></div>');
     form.push('</form>');
@@ -79,7 +61,7 @@ $(document).ready(function() {
       $('li#' + div).append('<span class="close"><a href="#">Close</a></span');
       $('li#' + div).append('<ul id="thread-' + id + '" class="comments"></ul>');
       
-      $.getJSON('comments.json?item=' + id, function(data) {        
+      $.getJSON('/items/' + id + '/comments.json', function(data) {        
         for(i = 0, length = data.length; i < length; ++i) {
           var d = data[i].comment;
 
@@ -93,11 +75,10 @@ $(document).ready(function() {
       
       var form  = []
       form.push('<li class="comment-form">');
-      form.push('<form id="new_comment" class="new_comment" method="post" action="/comments">');
+      form.push('<form id="new_comment" class="new_comment" method="post" action="/items/ ' + id + '/comments">');
       form.push('<input type="hidden" name="authenticity_token" value="' + AUTH_TOKEN + '" />');
       form.push('<label for="comment_text">Comment</label><textarea id="comment_text" name="comment[text">Your Comment</textarea>');
       form.push('<label for="comment_name">Name</label><input type="text" id="comment_name" name="comment[name]" value="Your Name" />');
-      form.push('<input type="hidden" name="comment[item_id]" value="' + id + '" />');
       form.push('<input type="submit" id="comment_submit" name="commit" value="Comment" />');
       form.push('<div class="clear"></div>');
       form.push('</form>');

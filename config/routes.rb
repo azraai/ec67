@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :items
-  map.resources :comments, :only => [:index, :create]
+  map.resources :items do |item|
+    item.resources :comments, :only => [:index, :create]
+  end
+  
   map.root :controller => "items"
   # The priority is based upon order of creation: first created -> highest priority.
 
