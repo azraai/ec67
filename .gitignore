@@ -1,5 +1,5 @@
 .DS_Store
-mockup/.DS_Store
+log/
 log/*.log
 tmp/**/*
 config/database.yml
