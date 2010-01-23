@@ -36,7 +36,7 @@ $(document).ready(function() {
     
     var form  = []
     form.push('<li class="comment-form">');
-    form.push('<form id="new_comment" class="new_comment" method="post" action="/items/ ' + id + '/comments">');
+    form.push('<form id="new_comment" class="new_comment" method="post" action="/items/' + id + '/comments">');
     form.push('<input type="hidden" name="authenticity_token" value="' + AUTH_TOKEN + '" />');
     form.push('<label for="comment_text">Comment</label><textarea id="comment_text" name="comment[text">Your Comment</textarea>');
     form.push('<label for="comment_name">Name</label><input type="text" id="comment_name" name="comment[name]" value="Your Name" />');
@@ -75,7 +75,7 @@ $(document).ready(function() {
       
       var form  = []
       form.push('<li class="comment-form">');
-      form.push('<form id="new_comment" class="new_comment" method="post" action="/items/ ' + id + '/comments">');
+      form.push('<form id="new_comment" class="new_comment" method="post" action="/items/' + id + '/comments">');
       form.push('<input type="hidden" name="authenticity_token" value="' + AUTH_TOKEN + '" />');
       form.push('<label for="comment_text">Comment</label><textarea id="comment_text" name="comment[text">Your Comment</textarea>');
       form.push('<label for="comment_name">Name</label><input type="text" id="comment_name" name="comment[name]" value="Your Name" />');
