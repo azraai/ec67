@@ -11,10 +11,6 @@
 
 <body>
   
-  <% if flash[:success] %>
-  <div class="notice"><span><%= flash[:success] %></span></div>
-  <% end %>
-  
   <div id="bar">
     
     <div class="container">
@@ -48,7 +44,7 @@
   </div>
   
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
-  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js', 'jquery.cookie', '1.js' %>
+  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js', 'jquery.cookie', 'utils', 'json_parse', 'application' %>
   
 </body>
 </html>

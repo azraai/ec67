@@ -1,12 +1,9 @@
 class CommentsController < InheritedResources::Base
   actions :index, :create
   belongs_to :item
-  respond_to :json
+  respond_to :json, :only => [:index, :create]
   
   def create
-    create! do
-      cookies[:sc] = @comment.item.id
-      root_path
-    end
+    create! { root_path}
   end
 end
