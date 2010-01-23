@@ -12,15 +12,17 @@ $(document).ready(function(){
       $('li#item-' + item_id).append(create_comment_wrap(item_id));
       $('#thread-' + item_id).append(create_comment_form(item_id, AUTH_TOKEN));
       $("#comment_name, #comment_text").mask();
+    
+    
+      $.getJSON(comments_url, function(data){
+        for(i = 0, length = data.length; i < length; ++i){
+          $('#thread-' + item_id).append(create_comment_item(item_id, data[i].comment));
+        }
+      });
+    
+      $('#thread-' + item_id).fadeIn(1000);
+    
     }
-    
-    $.getJSON(comments_url, function(data){
-      for(i = 0, length = data.length; i < length; ++i){
-        $('#thread-' + item_id).append(create_comment_item(item_id, data[i].comment));
-      }
-    });
-    
-    $('#thread-' + item_id).fadeIn(1000);
     
     return false;
     
