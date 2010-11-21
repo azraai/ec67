@@ -6,7 +6,7 @@ $(document).ready(function(){
   $(".comment a").live("click", function(){
     
     var item_id       = $(this).parents('li').attr('id').split('-')[1];
-    var comments_url  = '/items/' + item_id + '/comments.json';
+    var comments_url  = '/ec67/items/' + item_id + '/comments.json';
     
     if( $('#thread-' + item_id).length == 0 ){
       $('li#item-' + item_id).append(create_comment_wrap(item_id));
